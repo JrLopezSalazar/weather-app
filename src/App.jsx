@@ -3,11 +3,23 @@ import './App.css'
 import  axios  from 'axios'
 import Weather from './componets/Weather'
 import oxa from './assets/oxa.jpg'
+import FormWeather from './componets/FormWeather'
+import bg1 from './assets/bg1.jpg'
 
 function App() {
-  const bgImage = {
-    backgroundImage: `url("${oxa}")`,
-    backgroundSize: "cover"
+
+  const [searchCity, setSearchCity] = useState('')
+
+  
+  
+
+  
+
+  const bgImage = { 
+    backgroundImage: `url("${bg1}")`,
+    backgroundSize: "cover",
+    backgroundColor: "rgba(0,0,0,0.6)"
+    
   }
 
   const [weatherInfo, setWeatherInfo] = useState(null)
@@ -29,15 +41,20 @@ function App() {
         .catch((err) => console.log(err))
   }
 
-  const [searchCity, setsetsearchCity] = useState()
+  
 
-  const cityWeather = () => {
+  // const cityWeather = () => {
 
+  //   const API_KEY1 = "6923607ee8e0e4c3991cce51f50cd418"
+  //   const urlCity = `https://api.openweathermap.org/data/2.5/weather?q=${handleSubmit}&appid=${API_KEY1}`
+  //   // console.log(urlCity)
+
+  //   axios.get(urlCity)
+  //       .then(({data}) => setSearchCity(data))
+  //       .catch((err) => console.log(err))
     
-  }
-  const API_KEY1 = "6923607ee8e0e4c3991cce51f50cd418"
-  const urlCity = `https://api.openweathermap.org/data/2.5/weather?q={city name}&appid=${API_KEY1}`
-    console.log(urlCity)
+  // }
+  
   
   
   useEffect(() => {
@@ -51,8 +68,10 @@ function App() {
     <>
     <main className="min-h-screen text-white font-lato flex justify-center items-center px-4 " style={bgImage}>
       <div>
-        
-        <Weather weatherInfo={weatherInfo}/>
+        <FormWeather searchCity={searchCity}/>
+              
+        <Weather weatherInfo={weatherInfo}
+                />
         {/* <div className='bg-gradient-to-t'>
           <img src={"/images/oxa.jpg"} alt="" />
         </div> */}
